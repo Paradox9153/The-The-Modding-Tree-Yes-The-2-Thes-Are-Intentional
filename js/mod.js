@@ -1,25 +1,42 @@
 let modInfo = {
 	name: "TTPTYT2TAI!",
+	id: "9153id",
 	author: "Paradox9153",
 	pointsName: "points",
 	modFiles: ["layers.js", "tree.js"],
-
-	discordName: "",
+	
+	discordName: "test835",
 	discordLink: "",
-	initialStartPoints: new Decimal (10), // Used for hard resets and new players
+	initialStartPoints: new Decimal (0), // Used for hard resets and new players
 	offlineLimit: 1,  // In hours
 }
 
 // Set your version in num and name
 let VERSION = {
-	num: "0.0.1",
-	name: "Test123",
+	num: "0.0.2",
+	name: "Still begining",
 }
 
-let changelog = `<h1>Changelog:</h1><br>
+let changelog = 
+	`
+	<h1>Changelog:</h1><br><br>
+
+	
+	<h3>v0.0.2</h3><br>
+	<h4>Sep 3 2025</h4><br>
+	- Added Basic Upgrade to P*<br>
+	- Added P2<br>
+	- Added Testing Node (???)<br>
+	- Added P Milestone<br>
+	
+	<br><br><br><br>
+
 	<h3>v0.0.1</h3><br>
 	<h4>Sep 2 2025</h4><br>
-		- Started Project`
+	- Started Project
+	`
+
+	
 
 let winText = `Congratulations! You have reached the end and beaten this game, but for now...`
 
@@ -41,7 +58,9 @@ function getPointGen() {
 	if(!canGenPoints())
 		return new Decimal(0)
 
-	let gain = new Decimal(1)
+	let gain = new Decimal(0)
+	if (hasUpgrade('p', 11)) gain = gain.add(1)
+	if (hasUpgrade('p', 12)) gain = gain.times(upgradeEffect('p', 12))
 	return gain
 }
 
